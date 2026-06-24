@@ -2,7 +2,6 @@ package com.shopsphere.api_gateway.filter;
 
 import javax.crypto.SecretKey;
 
-import org.apache.tomcat.util.http.parser.Authorization;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -24,7 +23,7 @@ public class JwtValidationFilter implements HandlerInterceptor{
             return true;
         }
         String header = request.getHeader("Authorization");
-        if(header == null  || !header.startsWith("Bearer")){
+        if(header == null  || !header.startsWith("Bearer ")){
             response.setStatus(401);
             return false;
         }
